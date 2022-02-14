@@ -1,0 +1,18 @@
+version: "3.7"
+
+services:
+  node:
+    image: rtmp-server:latest
+    build: .
+    ports:
+      - 1935:1935 # rtmp
+      - 1936:1936 # rtmps
+      - 8443:8443 # https
+    extra_hosts:
+      - "test.test:127.0.0.1"
+      - "host.docker.internal:host-gateway"
+    devices:
+      - /dev/video0:/dev/video0
+    volumes:
+      - "./:/data"
+      - ${SSH_AUTH_SOCK}:/tmp/ssh-auth.sock
