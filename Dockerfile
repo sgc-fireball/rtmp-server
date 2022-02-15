@@ -1,17 +1,12 @@
 FROM ubuntu:20.04
 
-MAINTAINER richard.huelsberg@twt.de
-LABEL org.opencontainers.image.authors="richard.huelsberg@twt.de"
+MAINTAINER rh+github@hrdns.de
+LABEL org.opencontainers.image.authors="rh+github@hrdns.de"
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get -qy update
 RUN apt-get -qy install ffmpeg
 RUN apt-get -qy install nginx nginx-extras libnginx-mod-rtmp curl supervisor bash net-tools vim ngrep
-
-# Node & NPM
-#RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
-#RUN apt-get -y install nodejs
-#RUN npm install -g npm
 
 # User & Group
 RUN groupadd -g 1000 docker
